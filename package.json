@@ -1,0 +1,59 @@
+{
+  "name": "jscrypt",
+  "version": "1.0.0",
+  "description": "Encrypt/Decrypt files via Node.js built-in crypto and stream modules with percentage progress callback with desired chunksize",
+  "main": "jscrypt.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/behdadahmadi/jscrypt.git"
+  },
+  "keywords": [
+    "npm",
+    "blowfish",
+    "encrypt",
+    "decrypt",
+    "encryption",
+    "file",
+    "decryption",
+    "js",
+    "crypto",
+    "stream",
+    "jscrypt",
+    "aes",
+    "128",
+    "192",
+    "256",
+    "des",
+    "camellia",
+    "cbc",
+    "cfb",
+    "ctr",
+    "ecb",
+    "ofb",
+    "xts",
+    "hmac",
+    "sha256",
+    "sha1",
+    "cast",
+    "ecb",
+    "ede",
+    "rc2",
+    "rc4",
+    "seed",
+    "md5",
+    "hash",
+    "security",
+    "secure",
+    "fast",
+    "files"
+  ],
+  "author": "Behdad Ahmadi <behdadahmadi@mail.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/behdadahmadi/jscrypt/issues"
+  },
+  "homepage": "https://github.com/behdadahmadi/jscrypt#readme"
+}
