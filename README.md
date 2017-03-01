@@ -15,6 +15,7 @@ jscrypt is a very small and handy module for encrypting/decrypting files with se
 We assume that we want to encrypt file named "A.txt" with AES256 encryption algorithm, password "P@sW0rD" and by chunksize of 655000 bytes  :
 
 >var jscrypto = require('jscrypto');
+>
 >jscrypto.encryptFile("A.txt","A-encrypted.txt","aes256","P@sW0rD",655000,(progress) =>{
 >console.log(progress);
 >});
