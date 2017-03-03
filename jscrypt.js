@@ -15,7 +15,6 @@ function encryptFile(sourcePath,destinationPath,algorithm,password,chunkSize,cal
     });
     inFile.on('close', function() {
         outFile.write(encryptor.final());
-        //encryptor.end();
         outFile.close();   
     });
 }
