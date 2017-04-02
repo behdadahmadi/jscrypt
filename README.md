@@ -4,6 +4,8 @@ Encrypt/Decrypt your files with percentage progress and desired chunksize via No
 
 jscrypt is a very small and handy module for encrypting/decrypting files with selected speed and a progress callback. 
 
+NEW VERSION: Now It's possible to know when the job is done. Callback will return a boolean type,value of "true" to show the job is done.
+
 >npm install jscrypt --save
 
 -------------------
@@ -32,6 +34,13 @@ Now we want to decrypt file named "A-encrypted.txt" :
 
 >});
 >
+
+New version feature: callback returns a boolean when job is done. For example:
+>jscrypto.encryptFile("A-encrypted.txt","A-decrypted.txt","aes256","P@sW0rD",655000,(isDone)=>{
+    if(isDone === true ) {
+        console.log('Job is done!);
+    }
+});
 
 Notice: default chunksize is 665536. Whenever you prefer to use default chunksize, you should pass 0 to chunksize argument.
 

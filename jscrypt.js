@@ -1,13 +1,14 @@
 'use strict';
 var fs = require('fs');
 var crypto = require('crypto');
-function encryptFile(sourcePath,destinationPath,algorithm,password,chunkSize,callback){
+
+function encryptFile(sourcePath, destinationPath, algorithm, password, chunkSize, callback) {
     chunkSize = (chunkSize === 0) ? chunkSize = 665539 : chunkSize;
-    var inFile = fs.createReadStream(sourcePath,{ highWaterMark: chunkSize });
+    var inFile = fs.createReadStream(sourcePath, { highWaterMark: chunkSize });
     var outFile = fs.createWriteStream(destinationPath);
-    var encryptor = crypto.createCipher(algorithm,password);
+    var encryptor = crypto.createCipher(algorithm, password);
     var size = fs.statSync(sourcePath).size;
-    inFile.on('data',function(data) {
+    inFile.on('data', function(data) {
         var percentage = parseInt(inFile.bytesRead) / parseInt(size) * 100;
         var encrypted = encryptor.update(data);
         outFile.write(encrypted);
@@ -15,16 +16,18 @@ function encryptFile(sourcePath,destinationPath,algorithm,password,chunkSize,cal
     });
     inFile.on('close', function() {
         outFile.write(encryptor.final());
-        outFile.close();   
+        outFile.close();
+        callback(true);
     });
 }
-function decryptFile(sourcePath,destinationPath,algorithm,password,chunkSize,callback){
-   chunkSize = (chunkSize === 0) ? chunkSize = 665539 : chunkSize;
-    var inFile = fs.createReadStream(sourcePath,{ highWaterMark: chunkSize });
+
+function decryptFile(sourcePath, destinationPath, algorithm, password, chunkSize, callback) {
+    chunkSize = (chunkSize === 0) ? chunkSize = 665539 : chunkSize;
+    var inFile = fs.createReadStream(sourcePath, { highWaterMark: chunkSize });
     var outFile = fs.createWriteStream(destinationPath);
-    var decryptor = crypto.createDecipher(algorithm,password);
+    var decryptor = crypto.createDecipher(algorithm, password);
     var size = fs.statSync(sourcePath).size;
-    inFile.on('data',function(data) {
+    inFile.on('data', function(data) {
         var percentage = parseInt(inFile.bytesRead) / parseInt(size) * 100;
         var decrypted = decryptor.update(data);
         outFile.write(decrypted);
@@ -32,9 +35,9 @@ function decryptFile(sourcePath,destinationPath,algorithm,password,chunkSize,cal
     });
     inFile.on('close', function() {
         outFile.write(decryptor.final());
-        outFile.close();   
+        outFile.close();
+        callback(true);
     });
 
 }
-module.exports = {encryptFile,decryptFile};
-
+module.exports = { encryptFile, decryptFile };
